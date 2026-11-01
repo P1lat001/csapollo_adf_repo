@@ -11,6 +11,15 @@
 		"LS_AzureKeyVault_properties_typeProperties_baseUrl": {
 			"value": "https://keyvault-caresyncapollo.vault.azure.net/"
 		},
+		"LS_AzureSqlDatabase_properties_typeProperties_server": {
+			"value": "caresync-apollo-server.database.windows.net"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_database": {
+			"value": "free-sql-db-caresync"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_userName": {
+			"value": "abdms001786"
+		},
 		"LS_PostgreSql_properties_typeProperties_server": {
 			"value": "ep-frosty-water-aobakcfn-pooler.c-2.ap-southeast-1.aws.neon.tech"
 		},
