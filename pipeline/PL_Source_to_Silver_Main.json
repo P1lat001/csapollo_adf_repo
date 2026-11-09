@@ -103,7 +103,7 @@
 									{
 										"type": "Query",
 										"text": {
-											"value": "INSERT INTO ctrl.audit_log(adf_run_id,table_id,stage,status,start_time)\nVALUES('@{pipeline().parameters.adf_run_id}',@{item().table_id},'Source_to_silver','In_progress',SYSUTCDATETIME())",
+											"value": "INSERT INTO ctrl.audit_log(adf_run_id,table_id,stage,status,start_time)\nVALUES('@{pipeline().parameters.adf_run_id}',@{item().table_id},'SOURCE_TO_SILVER','IN_PROGRESS',SYSUTCDATETIME())",
 											"type": "Expression"
 										}
 									}
@@ -158,7 +158,7 @@
 			},
 			"adf_run_id": {
 				"type": "string",
-				"defaultValue": "a3"
+				"defaultValue": "a2"
 			}
 		},
 		"variables": {
