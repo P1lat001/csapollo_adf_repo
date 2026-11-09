@@ -32,7 +32,7 @@
 				}
 			},
 			{
-				"name": "Set_Stsrt_Time",
+				"name": "Set_Start_Time",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"policy": {
@@ -59,7 +59,7 @@
 						]
 					},
 					{
-						"activity": "Set_Stsrt_Time",
+						"activity": "Set_Start_Time",
 						"dependencyConditions": [
 							"Succeeded"
 						]
