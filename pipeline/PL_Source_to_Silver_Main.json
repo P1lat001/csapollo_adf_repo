@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "Select  table_id from ctrl.table_config WHERE is_active = 1 and source_system = '@{pipeline().parameters.source_system_sql_table}'",
+							"value": "Select table_id from ctrl.table_config WHERE is_active = 1 and source_system = '@{pipeline().parameters.source_system_sql_table}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -48,6 +48,7 @@
 						"value": "@activity('Read_Source_Tables_List').output.value",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Ingest from source to silver",
@@ -158,7 +159,7 @@
 			},
 			"adf_run_id": {
 				"type": "string",
-				"defaultValue": "a3"
+				"defaultValue": "a4"
 			}
 		},
 		"variables": {
