@@ -282,7 +282,7 @@
 							}
 						},
 						{
-							"name": "Set variable1",
+							"name": "Store_watermark_value",
 							"type": "SetVariable",
 							"dependsOn": [
 								{
@@ -298,7 +298,11 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": ""
+								"variableName": "Watermaark_variable",
+								"value": {
+									"value": "@activity('Read Watermark table').output.firstRow.watermark_value",
+									"type": "Expression"
+								}
 							}
 						}
 					]
@@ -317,6 +321,9 @@
 		},
 		"variables": {
 			"start_time": {
+				"type": "String"
+			},
+			"Watermaark_variable": {
 				"type": "String"
 			}
 		},
