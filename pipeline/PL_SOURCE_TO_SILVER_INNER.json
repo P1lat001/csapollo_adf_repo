@@ -282,7 +282,7 @@
 							}
 						},
 						{
-							"name": "Store_watermark_value",
+							"name": "Store Watermark Value",
 							"type": "SetVariable",
 							"dependsOn": [
 								{
