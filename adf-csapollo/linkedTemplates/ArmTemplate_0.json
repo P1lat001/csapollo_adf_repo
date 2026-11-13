@@ -305,7 +305,7 @@
 							"source": {
 								"type": "PostgreSqlV2Source",
 								"query": {
-									"value": "Select * from PUBLIC.@{activity('Read_Table_ID_From_Main').output.firstRow.source_table_name}\n@{\n\nif(equals(activity('Read_Table_ID_From_Main').output. firstRow. load_type, 'FULL')\n,'',\nconcat(\n'where updated_at.>','''',variables('Watermaark_variable'),''''\n)\n)\n}",
+									"value": "Select * from PUBLIC.@{activity('Read_Table_ID_From_Main').output.firstRow.source_table_name}\n@{\n\nif(equals(activity('Read_Table_ID_From_Main').output. firstRow. load_type, 'FULL')\n,'',\nconcat(\n'where ',activity('Read_Table_ID_From_Main').output. firstRow.watermark_column,' >','''',variables('Watermaark_variable'),''''\n)\n)\n}",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00"
@@ -419,6 +419,14 @@
 								},
 								"landing_timestamp": {
 									"value": "@variables('start_time')",
+									"type": "Expression"
+								},
+								"merge_keys": {
+									"value": "@coalesce(activity('Read_Table_ID_From_Main').output.firstRow.merge_keys,'')",
+									"type": "Expression"
+								},
+								"load_type": {
+									"value": "@activity('Read_Table_ID_From_Main').output.firstRow.load_type",
 									"type": "Expression"
 								}
 							}
