@@ -155,7 +155,7 @@
 		"parameters": {
 			"source_system_sql_table": {
 				"type": "string",
-				"defaultValue": "neon_postgres"
+				"defaultValue": "adls_csv"
 			},
 			"adf_run_id": {
 				"type": "string",
