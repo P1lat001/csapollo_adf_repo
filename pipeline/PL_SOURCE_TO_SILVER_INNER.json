@@ -386,7 +386,7 @@
 							"value": "adls_csv",
 							"activities": [
 								{
-									"name": "Copy data1",
+									"name": "Ingest Csv from Source to Landing",
 									"type": "Copy",
 									"dependsOn": [],
 									"policy": {
@@ -402,10 +402,21 @@
 											"type": "BinarySource",
 											"storeSettings": {
 												"type": "AzureBlobFSReadSettings",
-												"recursive": true
+												"recursive": false,
+												"modifiedDatetimeStart": {
+													"value": "@variables('Watermaark_variable')",
+													"type": "Expression"
+												},
+												"deleteFilesAfterCompletion": false
 											},
 											"formatSettings": {
 												"type": "BinaryReadSettings"
+											}
+										},
+										"sink": {
+											"type": "BinarySink",
+											"storeSettings": {
+												"type": "AzureBlobFSWriteSettings"
 											}
 										},
 										"enableStaging": false
@@ -413,7 +424,23 @@
 									"inputs": [
 										{
 											"referenceName": "DS_Csv_Binary",
-											"type": "DatasetReference"
+											"type": "DatasetReference",
+											"parameters": {
+												"folder": {
+													"value": "@activity('Read_Table_ID_From_Main').output.firstRow.source_path",
+													"type": "Expression"
+												},
+												"container": "source"
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DS_Csv_Binary",
+											"type": "DatasetReference",
+											"parameters": {
+												"container": "landing"
+											}
 										}
 									]
 								}
