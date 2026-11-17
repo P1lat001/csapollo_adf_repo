@@ -5,7 +5,14 @@
 			{
 				"name": "Read_Source_Tables_List",
 				"type": "Lookup",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "test_source_system",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 2,
@@ -170,6 +177,23 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "test_source_system",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "test_source_system",
+					"value": {
+						"value": "@pipeline().parameters.source_system_sql_table",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
@@ -184,6 +208,9 @@
 		},
 		"variables": {
 			"test": {
+				"type": "String"
+			},
+			"test_source_system": {
 				"type": "String"
 			}
 		},
