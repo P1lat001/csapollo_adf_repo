@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "Select table_id from ctrl.table_config WHERE is_active = 1 and source_system = '@{pipeline().parameters.source_system_sql_table}'",
+							"value": "@concat(\n'Select table_id\n from ctrl.table_config\n WHERE is_active = 1\n and source_system = ''',\npipeline().parameters.source_system_sql_table,\n''''\n)",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -34,6 +34,8 @@
 			{
 				"name": "Ingest_all_Tables_from_Source_output",
 				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Read_Source_Tables_List",
