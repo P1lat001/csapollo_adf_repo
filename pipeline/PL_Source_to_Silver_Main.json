@@ -199,7 +199,7 @@
 		"parameters": {
 			"source_system_sql_table": {
 				"type": "string",
-				"defaultValue": "neon_postgress"
+				"defaultValue": "neon_postgres"
 			},
 			"adf_run_id": {
 				"type": "string",
