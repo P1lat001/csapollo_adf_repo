@@ -904,7 +904,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"notebookPath": {
-											"value": "/Users/shriekrishna876gmail.com/caresync-apollo-repo/adb-apollo-caresync-repo/gold/NB_@{item().gold_table_name}",
+											"value": "/Users/shriekrishna876@gmail.com/caresync-apollo-repo/adb-apollo-caresync-repo/gold/NB_@{item().gold_table_name}",
 											"type": "Expression"
 										}
 									},
@@ -959,7 +959,7 @@
 				"parameters": {
 					"adf_run_id": {
 						"type": "string",
-						"defaultValue": "a6"
+						"defaultValue": "a8"
 					}
 				},
 				"variables": {
