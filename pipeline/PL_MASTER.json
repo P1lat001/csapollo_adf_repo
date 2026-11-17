@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Source to Silver Postgress",
+				"name": "Source to Silver Postgres",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"policy": {
@@ -17,7 +17,7 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"source_system_sql_table": "neon_postgress",
+						"source_system_sql_table": "neon_postgres",
 						"adf_run_id": {
 							"value": "@pipeline().RunId",
 							"type": "Expression"
@@ -53,7 +53,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Source to Silver Postgress",
+						"activity": "Source to Silver Postgres",
 						"dependencyConditions": [
 							"Completed"
 						]
