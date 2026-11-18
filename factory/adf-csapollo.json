@@ -1,0 +1,12 @@
+{
+	"name": "adf-csapollo",
+	"properties": {
+		"globalParameters": {
+			"email_receipent": {
+				"type": "string",
+				"value": "shriekrishna876@gmail.com"
+			}
+		}
+	},
+	"location": "centralindia"
+}
