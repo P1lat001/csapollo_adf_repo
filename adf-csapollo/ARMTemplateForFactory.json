@@ -219,7 +219,10 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/shriekrishna876@gmail.com/caresync-apollo-repo/adb-apollo-caresync-repo/landing_to_Bronze",
+							"notebookPath": {
+								"value": "/caresync_repo/adb-apollo-caresync-repo/landing_to_Bronze",
+								"type": "Expression"
+							},
 							"baseParameters": {
 								"source_system": {
 									"value": "@activity('Read_Table_ID_From_Main').output.firstRow.source_system",
@@ -264,7 +267,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/shriekrishna876@gmail.com/caresync-apollo-repo/adb-apollo-caresync-repo/bronze_to_silver",
+							"notebookPath": "/caresync_repo/adb-apollo-caresync-repo/bronze_to_silver",
 							"baseParameters": {
 								"table_name": {
 									"value": "@activity('Read_Table_ID_From_Main').output.firstRow.silver_table_name",
@@ -784,7 +787,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"notebookPath": {
-											"value": "/Users/shriekrishna876@gmail.com/caresync-apollo-repo/adb-apollo-caresync-repo/gold/NB_@{item().gold_table_name}",
+											"value": "/caresync_repo/adb-apollo-caresync-repo/gold/NB_@{item().gold_table_name}",
 											"type": "Expression"
 										}
 									},
