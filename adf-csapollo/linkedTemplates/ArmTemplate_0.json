@@ -1104,8 +1104,6 @@
 					{
 						"name": "Ingest_all_Tables_from_Source_output",
 						"type": "ForEach",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [
 							{
 								"activity": "Read_Source_Tables_List",
