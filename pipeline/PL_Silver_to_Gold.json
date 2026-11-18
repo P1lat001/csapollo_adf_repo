@@ -136,7 +136,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"notebookPath": {
-									"value": "/Users/shriekrishna876@gmail.com/caresync-apollo-repo/adb-apollo-caresync-repo/gold/NB_@{item().gold_table_name}",
+									"value": "/caresync_repo/adb-apollo-caresync-repo/gold/NB_@{item().gold_table_name}",
 									"type": "Expression"
 								}
 							},
