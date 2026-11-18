@@ -58,6 +58,51 @@
 					"variableName": "body_header",
 					"value": "For any Support please reach out to abd@gmail.com."
 				}
+			},
+			{
+				"name": "Prepare Email Subject",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "email_subject",
+					"value": {
+						"value": "@{pipeline().globalParameters.env} | SUCCESS | CARESYNC MASTER RUN",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Check ovrall Failed count",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "select count(*) as cont from ctrl.audit_log where adf_run_id = '@{pipeline().parameters.adf_run_id}' and status ! = 'SUCCESS'",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					}
+				}
 			}
 		],
 		"parameters": {
@@ -71,6 +116,9 @@
 				"type": "String"
 			},
 			"body_header": {
+				"type": "String"
+			},
+			"email_subject": {
 				"type": "String"
 			}
 		},
