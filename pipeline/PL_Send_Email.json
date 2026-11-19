@@ -62,7 +62,14 @@
 			{
 				"name": "Prepare Email Subject",
 				"type": "SetVariable",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Check overall Failed count",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
@@ -71,13 +78,13 @@
 				"typeProperties": {
 					"variableName": "email_subject",
 					"value": {
-						"value": "@{pipeline().globalParameters.env} | SUCCESS | CARESYNC MASTER RUN",
+						"value": "@{pipeline().globalParameters.env} | @{if(greater(activity('Check overall Failed count').output.firstRow.count,0),'FAILED','SUCCESS')} | CARESYNC MASTER RUN",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "Check ovrall Failed count",
+				"name": "Check overall Failed count",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
