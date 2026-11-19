@@ -55,8 +55,8 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "body_header",
-					"value": "For any Support please reach out to abd@gmail.com."
+					"variableName": "body_footer",
+					"value": "For any Support please reach out to abd@gmail.com"
 				}
 			},
 			{
@@ -110,6 +110,48 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Prepare logic apps body",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Prepare Email Subject",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Prepare Email Body Footer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Prepare Email Body Header",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Read All Tables status",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "logic_apps_body",
+					"value": {
+						"value": "{\n\"subject\":\"@{variables('email_subject')}\",\n\"email receipients\":\"@{pipeline().globalParameters.email_receipent}\",\n\"body header\":\"@{variables('body_header')}\",\n\"body footer\":\"this is a sample footer\",\n\"status table\": []\n}",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
@@ -126,6 +168,12 @@
 				"type": "String"
 			},
 			"email_subject": {
+				"type": "String"
+			},
+			"logic_apps_body": {
+				"type": "String"
+			},
+			"body_footer": {
 				"type": "String"
 			}
 		},
